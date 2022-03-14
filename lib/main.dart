@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 //My import
 import 'package:flutter_application_poke_test/routes/routes.dart';
+import 'package:flutter_application_poke_test/widgets/widget_theme.dart';
 import 'package:flutter_application_poke_test/services/poke_services.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Poke Test',
+        theme: WTheme.myTheme,
         initialRoute: 'login',
         routes: appRoutes,
       ),
