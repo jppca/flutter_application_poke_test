@@ -9,7 +9,6 @@ class WTheme {
       appBarTheme: ThemeData()
           .appBarTheme
           .copyWith(backgroundColor: const Color.fromRGBO(242, 242, 242, 1)),
-      // primaryColor: const Color.fromRGBO(242, 242, 242, 1),
       scaffoldBackgroundColor: const Color.fromRGBO(242, 242, 242, 1),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: TextButton.styleFrom(
@@ -24,7 +23,6 @@ class WTheme {
         elevation: 0,
         selectedItemColor: Color.fromRGBO(213, 0, 0, 1),
       ),
-
       fontFamily: 'Montserrat',
     );
   }

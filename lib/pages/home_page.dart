@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //My imports
 import 'package:flutter_application_poke_test/services/poke_services.dart';
@@ -32,6 +33,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final pokeService = Provider.of<PokeService>(context);
     return Scaffold(
       appBar: AppBar(
@@ -52,22 +54,19 @@ class _HomePageState extends State<HomePage> {
                 Icons.logout,
                 size: 35,
               ),
-              onPressed: () {
-                pokeService.pokemones = [];
-                Navigator.pushReplacementNamed(context, 'loading');
+              onPressed: () async {
+                final SharedPreferences prefs = await _prefs;
+                final success = await prefs.setString('token', 'delete');
+                if (success) {
+                  pokeService.pokemones = [];
+                  Navigator.pushReplacementNamed(context, 'loading');
+                }
               },
             ),
           ),
         ],
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
-      /*ListView.builder(
-          itemCount: pokeService.pokemones?.length,
-          itemBuilder: (context, index) {
-            return Wcard(
-                name: pokeService.pokemones![index].name,
-                image: pokeService.pokemones![index].image);
-          }),*/
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

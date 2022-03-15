@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //My imports
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_application_poke_test/models/user.dart';
+import 'package:flutter_application_poke_test/pages/home_page.dart';
 import 'package:flutter_application_poke_test/pages/login_page.dart';
 import 'package:flutter_application_poke_test/services/poke_services.dart';
 
@@ -45,11 +48,11 @@ class _LoadingPageState extends State<LoadingPage> {
 
   Future checkpokemones(BuildContext context) async {
     final pokeService = Provider.of<PokeService>(context);
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
     final isdata = await pokeService.fetchpokemon(10);
-    if (isdata) {
-      /*  sockectService.connect();
-      //Navigator.pushReplacementNamed(context, '');
+    final SharedPreferences prefs = await _prefs;
+    if (isdata && prefs.getString('token') == User().tokenD) {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
@@ -58,11 +61,11 @@ class _LoadingPageState extends State<LoadingPage> {
             __,
             ___,
           ) =>
-              const UsersPages(),
+              const HomePage(),
           transitionDuration: const Duration(milliseconds: 0),
         ),
       );
-    } else {*/
+    } else {
       //Navigator.pushReplacementNamed(context, 'login');
       Navigator.pushReplacement(
         context,

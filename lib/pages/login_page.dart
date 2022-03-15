@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 //my imports
-import 'package:flutter_application_poke_test/widgets/widget_custom_input.dart';
-import 'package:flutter_application_poke_test/widgets/widget_dialog.dart';
-import 'package:flutter_application_poke_test/widgets/widget_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_application_poke_test/models/user.dart';
+import 'package:flutter_application_poke_test/widgets/widget_title.dart';
+import 'package:flutter_application_poke_test/widgets/widget_dialog.dart';
+import 'package:flutter_application_poke_test/widgets/widget_custom_input.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -41,6 +42,7 @@ class Form extends StatefulWidget {
 }
 
 class _FormState extends State<Form> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final emailCtrl = TextEditingController(text: User().emailD);
   final passCtrl = TextEditingController(text: User().passwordD);
 
@@ -85,6 +87,8 @@ class _FormState extends State<Form> {
                   showD(context, 'Dato incorrecto',
                       'Ingrese la contraseña correcta \n"example"');
                 } else {
+                  final SharedPreferences prefs = await _prefs;
+                  prefs.setString('token', User().tokenD);
                   Navigator.pushReplacementNamed(context, 'home');
                 }
               }
