@@ -18,14 +18,25 @@ class Wlist extends StatefulWidget {
 class _WlistState extends State<Wlist> {
   @override
   Widget build(BuildContext context) {
-    final pokeService = Provider.of<PokeService>(context);
-    return ListView.builder(
-      itemCount: pokeService.pokemones?.length,
-      itemBuilder: (context, index) {
-        return Wcard(
-            name: pokeService.pokemones![index].name,
-            image: pokeService.pokemones![index].image);
-      },
-    );
+    final pokeService = Provider.of<PokeService>(context, listen: false);
+    return RefreshIndicator(
+        child: ListView.builder(
+          itemCount: pokeService.pokemones?.length,
+          itemBuilder: (context, index) {
+            return Wcard(
+                name: pokeService.pokemones![index].name,
+                image: pokeService.pokemones![index].image);
+          },
+        ),
+        onRefresh: () => _refresh(context));
+  }
+
+  Future<void> _refresh(BuildContext context) async {
+    final pokeService = Provider.of<PokeService>(context, listen: false);
+    if (pokeService.pokemones!.isNotEmpty) {
+      pokeService.pokemones = [];
+      await pokeService.fetchpokemon(10);
+    }
+    setState(() {});
   }
 }
