@@ -85,7 +85,7 @@ class _FormState extends State<Form> {
                   showD(context, 'Dato incorrecto',
                       'Ingrese la contraseña correcta \n"example"');
                 } else {
-                  print('todo chido');
+                  Navigator.pushReplacementNamed(context, 'home');
                 }
               }
             },
