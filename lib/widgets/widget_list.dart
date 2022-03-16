@@ -37,7 +37,7 @@ class _WlistState extends State<Wlist> {
     final pokeService = Provider.of<PokeService>(context, listen: false);
     if (pokeService.pokemones!.isNotEmpty) {
       pokeService.pokemones = [];
-      await pokeService.fetchpokemon(10);
+      await pokeService.fetchpokemon();
     }
     setState(() {});
   }

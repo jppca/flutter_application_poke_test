@@ -28,7 +28,7 @@ class _LoadingPageState extends State<LoadingPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const <Widget>[
                 Text(
-                  'Espere...',
+                  'Cargando...',
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -50,11 +50,11 @@ class _LoadingPageState extends State<LoadingPage> {
     final pokeService = Provider.of<PokeService>(context);
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-    final isdata = await pokeService.fetchpokemon(10);
+    final isdata = await pokeService.fetchpokemon();
     final SharedPreferences prefs = await _prefs;
-    final mylist = prefs.getStringList('mypokemones');
-    if (mylist != null && mylist.length >= 1) {
-      await pokeService.fetchmypokemon(mylist);
+    final userlist = prefs.getStringList('userpokemones');
+    if (userlist != null && userlist.isNotEmpty) {
+      await pokeService.fetchmypokemon(userlist);
     }
     if (isdata && prefs.getString('token') == User().tokenD) {
       Navigator.pushReplacement(

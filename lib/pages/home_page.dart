@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_application_poke_test/pages/user_page.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
 //My imports
+import 'package:flutter_application_poke_test/widgets/widget_user_pokemon_list.dart';
 import 'package:flutter_application_poke_test/services/poke_services.dart';
 import 'package:flutter_application_poke_test/widgets/widget_title.dart';
 import 'package:flutter_application_poke_test/widgets/widget_list.dart';
@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                 final SharedPreferences prefs = await _prefs;
                 final success = await prefs.setString('token', 'delete');
                 if (success) {
+                  pokeService.userpokemones = [];
                   pokeService.pokemones = [];
                   Navigator.pushReplacementNamed(context, 'loading');
                 }

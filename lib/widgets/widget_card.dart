@@ -75,30 +75,30 @@ class _WcardState extends State<Wcard> {
   Future addmypokemones(BuildContext context, String id) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
-    var mylist = prefs.getStringList('mypokemones');
+    var mylist = prefs.getStringList('userpokemones');
     mylist == null ? mylist = [] : mylist = mylist;
     if (mylist.length >= 5) {
       showD(context, 'Upss', 'Lo sentimos ya tienes tus 5 pokemones.');
     } else {
       mylist.add(id);
-      prefs.setStringList('mypokemones', mylist);
+      prefs.setStringList('userpokemones', mylist);
+      showD(context, '¡Listo!', 'Tienes un nuevo pokémon guardado.');
     }
   }
 
   Future deletemypokemones(BuildContext context, String id) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
-    var mylist = prefs.getStringList('mypokemones');
-    mylist == null ? mylist = [] : mylist = mylist;
-    if (mylist.length <= 5) {
-      print(mylist.toString());
-      print(id);
-      if (mylist.contains(id)) {
-        mylist.remove(id);
-        prefs.setStringList('mypokemones', mylist);
+    var userlist = prefs.getStringList('userpokemones');
+    userlist == null ? userlist = [] : userlist = userlist;
+    if (userlist.length <= 5) {
+      if (userlist.contains(id)) {
+        userlist.remove(id);
+        prefs.setStringList('userpokemones', userlist);
         showD(context, '¡Listo!', 'Pokémon eliminado con éxito.');
+        setState(() {});
       } else {
-        prefs.setStringList('mypokemones', mylist);
+        prefs.setStringList('userpokemones', userlist);
       }
     }
   }

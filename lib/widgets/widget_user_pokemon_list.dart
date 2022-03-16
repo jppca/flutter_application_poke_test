@@ -21,12 +21,12 @@ class _WUserPokemonListState extends State<WUserPokemonList> {
 
     return RefreshIndicator(
         child: ListView.builder(
-          itemCount: pokeService.mypokemones?.length,
+          itemCount: pokeService.userpokemones?.length,
           itemBuilder: (context, index) {
             return Wcard(
-                id: pokeService.mypokemones![index].id,
-                name: pokeService.mypokemones![index].name,
-                image: pokeService.mypokemones![index].image,
+                id: pokeService.userpokemones![index].id,
+                name: pokeService.userpokemones![index].name,
+                image: pokeService.userpokemones![index].image,
                 mypokemon: true);
           },
         ),
@@ -37,14 +37,14 @@ class _WUserPokemonListState extends State<WUserPokemonList> {
     final pokeService = Provider.of<PokeService>(context, listen: false);
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
-    var mylist = prefs.getStringList('mypokemones');
-    if (pokeService.mypokemones!.isEmpty) {
-      mylist == null ? mylist = [] : mylist = mylist;
-      await pokeService.fetchmypokemon(mylist);
+    var userlist = prefs.getStringList('userpokemones');
+    if (pokeService.userpokemones!.isEmpty) {
+      userlist == null ? userlist = [] : userlist = userlist;
+      await pokeService.fetchmypokemon(userlist);
     } else {
-      mylist == null ? mylist = [] : mylist = mylist;
-      pokeService.mypokemones = [];
-      await pokeService.fetchmypokemon(mylist);
+      userlist == null ? userlist = [] : userlist = userlist;
+      pokeService.userpokemones = [];
+      await pokeService.fetchmypokemon(userlist);
     }
     setState(() {});
   }
