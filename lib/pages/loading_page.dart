@@ -52,6 +52,10 @@ class _LoadingPageState extends State<LoadingPage> {
 
     final isdata = await pokeService.fetchpokemon(10);
     final SharedPreferences prefs = await _prefs;
+    final mylist = prefs.getStringList('mypokemones');
+    if (mylist != null && mylist.length >= 1) {
+      await pokeService.fetchmypokemon(mylist);
+    }
     if (isdata && prefs.getString('token') == User().tokenD) {
       Navigator.pushReplacement(
         context,

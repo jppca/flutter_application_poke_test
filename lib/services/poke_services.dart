@@ -9,6 +9,7 @@ import 'package:flutter_application_poke_test/models/pokemon.dart';
 class PokeService extends ChangeNotifier {
   Pokemon? pokemon;
   late List<Pokemon>? pokemones = [];
+  late List<Pokemon>? mypokemones = [];
 
   Future fetchpokemon(int cp) async {
     for (int i = 0; i < cp; i++) {
@@ -21,11 +22,30 @@ class PokeService extends ChangeNotifier {
         headers: {'Content-Type': 'application/json'},
       );
       if (resp.statusCode == 200) {
-        pokemon = pokemonFromJson(resp.body);
+        pokemon = pokemonFromJson(resp.body, num.toString());
         pokemones?.add(pokemon!);
       }
     }
     if (pokemones != null && pokemones!.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future fetchmypokemon(List<String> mylist) async {
+    for (int i = 0; i < mylist.length; i++) {
+      var url = Uri.parse('${Environment.endPointPokemon}/${mylist[i]}');
+      final resp = await http.get(
+        url,
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (resp.statusCode == 200) {
+        pokemon = pokemonFromJson(resp.body, mylist[i]);
+        mypokemones?.add(pokemon!);
+      }
+    }
+    if (mypokemones != null && mypokemones!.isNotEmpty) {
       return true;
     } else {
       return false;

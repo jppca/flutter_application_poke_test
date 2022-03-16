@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_poke_test/pages/user_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,11 +19,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     Wlist(),
-    const Center(
-      child: Text(
-        'Index 2',
-      ),
-    ),
+    WUserPokemonList(),
   ];
 
   void _onItemTapped(int index) {

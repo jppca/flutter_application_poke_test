@@ -24,8 +24,10 @@ class _WlistState extends State<Wlist> {
           itemCount: pokeService.pokemones?.length,
           itemBuilder: (context, index) {
             return Wcard(
+                id: pokeService.pokemones![index].id,
                 name: pokeService.pokemones![index].name,
-                image: pokeService.pokemones![index].image);
+                image: pokeService.pokemones![index].image,
+                mypokemon: false);
           },
         ),
         onRefresh: () => _refresh(context));
