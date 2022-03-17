@@ -27,7 +27,7 @@ class _WlistState extends State<Wlist> {
                 id: pokeService.pokemones![index].id,
                 name: pokeService.pokemones![index].name,
                 image: pokeService.pokemones![index].image,
-                mypokemon: false);
+                userpokemon: false);
           },
         ),
         onRefresh: () => _refresh(context));

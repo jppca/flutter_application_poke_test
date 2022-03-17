@@ -30,8 +30,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final pokeService = Provider.of<PokeService>(context);
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
     return Scaffold(
       appBar: AppBar(
         title: Container(

@@ -1,6 +1,5 @@
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
 //My imports
 import 'package:flutter_application_poke_test/services/poke_services.dart';
@@ -17,35 +16,45 @@ class WUserPokemonList extends StatefulWidget {
 class _WUserPokemonListState extends State<WUserPokemonList> {
   @override
   Widget build(BuildContext context) {
-    final pokeService = Provider.of<PokeService>(context);
-
-    return RefreshIndicator(
-        child: ListView.builder(
-          itemCount: pokeService.userpokemones?.length,
-          itemBuilder: (context, index) {
-            return Wcard(
-                id: pokeService.userpokemones![index].id,
-                name: pokeService.userpokemones![index].name,
-                image: pokeService.userpokemones![index].image,
-                mypokemon: true);
-          },
-        ),
-        onRefresh: () => _refresh(context));
-  }
-
-  Future<void> _refresh(BuildContext context) async {
     final pokeService = Provider.of<PokeService>(context, listen: false);
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-    final SharedPreferences prefs = await _prefs;
-    var userlist = prefs.getStringList('userpokemones');
-    if (pokeService.userpokemones!.isEmpty) {
-      userlist == null ? userlist = [] : userlist = userlist;
-      await pokeService.fetchmypokemon(userlist);
-    } else {
-      userlist == null ? userlist = [] : userlist = userlist;
-      pokeService.userpokemones = [];
-      await pokeService.fetchmypokemon(userlist);
-    }
-    setState(() {});
+
+    return FutureBuilder(
+        future: pokeService.checkuserpokemones(context),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            //return const Center(child: CircularProgressIndicator());
+            return const Text('sin datos');
+          } else {
+            var items = pokeService.userpokemones;
+            return ListView.builder(
+              itemCount: items!.length,
+              itemBuilder: (context, index) {
+                final item = items[index];
+                return Dismissible(
+                  key: Key(item.id),
+                  onDismissed: (direction) async {
+                    await pokeService.deleteuserpokemones(item.id);
+                    setState(() {
+                      items.removeAt(index);
+                      pokeService.userpokemones = items;
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${item.name} eliminado'),
+                      ),
+                    );
+                  },
+                  background:
+                      Container(color: const Color.fromRGBO(213, 0, 0, 1)),
+                  child: Wcard(
+                      id: item.id,
+                      name: item.name,
+                      image: item.image,
+                      userpokemon: true),
+                );
+              },
+            );
+          }
+        });
   }
 }

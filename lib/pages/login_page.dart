@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 //my imports
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_application_poke_test/models/user.dart';
-import 'package:flutter_application_poke_test/widgets/widget_title.dart';
-import 'package:flutter_application_poke_test/widgets/widget_dialog.dart';
 import 'package:flutter_application_poke_test/widgets/widget_custom_input.dart';
+import 'package:flutter_application_poke_test/widgets/widget_dialog.dart';
+import 'package:flutter_application_poke_test/widgets/widget_title.dart';
+import 'package:flutter_application_poke_test/models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

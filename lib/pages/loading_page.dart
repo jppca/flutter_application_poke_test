@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
 //My imports
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_application_poke_test/models/user.dart';
-import 'package:flutter_application_poke_test/pages/home_page.dart';
-import 'package:flutter_application_poke_test/pages/login_page.dart';
 import 'package:flutter_application_poke_test/services/poke_services.dart';
+import 'package:flutter_application_poke_test/pages/login_page.dart';
+import 'package:flutter_application_poke_test/pages/home_page.dart';
+import 'package:flutter_application_poke_test/models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -52,10 +52,6 @@ class _LoadingPageState extends State<LoadingPage> {
 
     final isdata = await pokeService.fetchpokemon();
     final SharedPreferences prefs = await _prefs;
-    final userlist = prefs.getStringList('userpokemones');
-    if (userlist != null && userlist.isNotEmpty) {
-      await pokeService.fetchmypokemon(userlist);
-    }
     if (isdata && prefs.getString('token') == User().tokenD) {
       Navigator.pushReplacement(
         context,
@@ -70,7 +66,6 @@ class _LoadingPageState extends State<LoadingPage> {
         ),
       );
     } else {
-      //Navigator.pushReplacementNamed(context, 'login');
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
