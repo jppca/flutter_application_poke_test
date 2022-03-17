@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class WCustomInput extends StatefulWidget {
+class WCustonInput extends StatefulWidget {
   final IconData icon;
   final String placeholder;
   final TextEditingController textcontroller;
   final TextInputType keybordtype;
   final bool ispassword;
   bool isObscure;
-  WCustomInput(
+  WCustonInput(
       {Key? key,
       required this.icon,
       required this.placeholder,
@@ -18,10 +18,10 @@ class WCustomInput extends StatefulWidget {
       this.isObscure = true})
       : super(key: key);
   @override
-  _WCustomInputState createState() => _WCustomInputState();
+  _WCustonInputState createState() => _WCustonInputState();
 }
 
-class _WCustomInputState extends State<WCustomInput> {
+class _WCustonInputState extends State<WCustonInput> {
   @override
   Widget build(BuildContext context) {
     return Container(

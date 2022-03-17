@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //My imports
-import 'package:flutter_application_poke_test/widgets/widget_custom_input.dart';
+import 'package:flutter_application_poke_test/widgets/widget_custon_input.dart';
 import 'package:flutter_application_poke_test/widgets/widget_dialog.dart';
 import 'package:flutter_application_poke_test/widgets/widget_title.dart';
 import 'package:flutter_application_poke_test/models/user.dart';
@@ -25,12 +25,12 @@ class _WFormState extends State<WForm> {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(children: <Widget>[
         const Wtitle(title: 'POKÉ', titleExt: 'TEST'),
-        WCustomInput(
+        WCustonInput(
             icon: Icons.mail_outline,
             placeholder: "Correo",
             keybordtype: TextInputType.emailAddress,
             textcontroller: emailCtrl),
-        WCustomInput(
+        WCustonInput(
           icon: Icons.lock_outline,
           placeholder: "Contraseña",
           keybordtype: TextInputType.visiblePassword,
