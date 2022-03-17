@@ -68,7 +68,7 @@ class _WUserPokemonListState extends State<WUserPokemonList> {
               if (!snapshot.hasData) {
                 return const Center(
                   child: Text(
-                    'Aqui veras a tús pokémones',
+                    'Aquí verás a tus pokémones',
                     style: TextStyle(fontSize: 18),
                   ),
                 );
