@@ -24,7 +24,7 @@ class _WFormState extends State<WForm> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(children: <Widget>[
-        const Wtitle(title: 'POKÉ', titleExt: 'TEST'),
+        const Wtitle(title: 'POKE', titleExt: 'TEST'),
         WCustonInput(
             icon: Icons.mail_outline,
             placeholder: "Correo",

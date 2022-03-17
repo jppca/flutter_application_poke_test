@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Poke Test',
+        title: 'PokeTest',
         theme: WTheme.myTheme,
         initialRoute: 'loading',
         routes: appRoutes,

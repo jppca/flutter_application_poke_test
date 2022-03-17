@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Container(
           margin: const EdgeInsets.only(top: 42),
-          child: const Wtitle(title: 'POKÉ', titleExt: 'TEST'),
+          child: const Wtitle(title: 'POKE', titleExt: 'TEST'),
         ),
         toolbarHeight: 100,
         elevation: 0,

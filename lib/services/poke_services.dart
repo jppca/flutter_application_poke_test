@@ -60,7 +60,7 @@ class PokeService extends ChangeNotifier {
 
 /*local storage*/
 //The implemented logic is simple.
-//The Pokemon's ID number is stored locally in a list for later request.
+//The Pokemons ID number is stored locally in a list for later request.
 //It is allowed to save 5.
   Future adduserpokemones(BuildContext context, String id) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -77,7 +77,7 @@ class PokeService extends ChangeNotifier {
   }
 
 //Verification of Pokemon saved by the user.
-//The user's Pokemon list is loaded.
+//The users Pokemon list is loaded.
   Future checkuserpokemones(BuildContext context) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
