@@ -14,6 +14,8 @@ class PokeService extends ChangeNotifier {
   late List<Pokemon>? userpokemones = [];
 
 /*PokeAPi data*/
+//The logic is based on making a request based on a random number generator to bring different Pokemon.
+//Limited to 10 Pokemon.
   Future fetchpokemon() async {
     for (int i = 0; i < 10; i++) {
       var rng = Random();
@@ -36,6 +38,7 @@ class PokeService extends ChangeNotifier {
     }
   }
 
+//The logic is based on passing the list of locally saved IDs to make API requests.
   Future fetchuserpokemon(List<String> mylist) async {
     for (int i = 0; i < mylist.length; i++) {
       var url = Uri.parse('${Environment.endPointPokemon}/${mylist[i]}');
@@ -56,13 +59,16 @@ class PokeService extends ChangeNotifier {
   }
 
 /*local storage*/
+//The implemented logic is simple.
+//The Pokemon's ID number is stored locally in a list for later request.
+//It is allowed to save 5.
   Future adduserpokemones(BuildContext context, String id) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
     var userlist = prefs.getStringList('userpokemones');
     userlist == null ? userlist = [] : userlist = userlist;
     if (userlist.length >= 5) {
-      showD(context, 'Upss', 'Lo sentimos ya tienes tus 5 pokemones.');
+      showD(context, 'Upss', 'Lo sentimos ya tienes tus 5 Pokémones.');
     } else {
       userlist.add(id);
       prefs.setStringList('userpokemones', userlist);
@@ -70,6 +76,8 @@ class PokeService extends ChangeNotifier {
     }
   }
 
+//Verification of Pokemon saved by the user.
+//The user's Pokemon list is loaded.
   Future checkuserpokemones(BuildContext context) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
@@ -84,6 +92,7 @@ class PokeService extends ChangeNotifier {
     }
   }
 
+//Remove Pokemon from user list.
   Future deleteuserpokemones(String id) async {
     final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;

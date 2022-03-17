@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-//My import
+//My imports
 import 'package:flutter_application_poke_test/services/poke_services.dart';
 import 'package:flutter_application_poke_test/widgets/widget_theme.dart';
 import 'package:flutter_application_poke_test/routes/routes.dart';
