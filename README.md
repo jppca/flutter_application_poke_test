@@ -115,7 +115,8 @@ Paquetes utilizados en el proyecto:
  </tr>
 </table>
 
-- [Documentación de apoyo para Flutter](https://docs.flutter.dev/get-started/install)
+- [Documentación de apoyo para instalación de Flutter](https://docs.flutter.dev/get-started/install)
+- [Documentación para Desarrollo con Flutter.](https://flutter.dev/docs)
 
 Señalar que también es posible utilizar Visual Studio Code  como herramienta de desarrollo instalando la extensión de Flutter.
 
@@ -130,19 +131,59 @@ El siguiente paso es seleccionar un emulador previamente creado  en Android Stud
 
 ## Resultado obtenido en el proyecto.
 
-- 1-Simulación de inicio de sesión con validaciones.
-- 2-Simulación de persistencia en una sesión de usuario.
-- 4-simulación de  un cierre de sesión de usuario.
-- 3-Consulta a servicio PokeAPI.
-- 4-Persistencia de algunos Pokémones.
-- 5-Eliminación de Pokémones guardados por usuario.
-
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<table>
+<tr>
+  <td> 
+      <br>
+      - 1-Simulación de inicio de sesión con validaciones.
+      <br>
+      <br>
+        <img src="R1.gif" width="248" height="465">
+      <br>
+  </td>
+  <td> 
+      <br>
+     - 2-Simulación de persistencia en una sesión de usuario.
+      <br>
+      <br>
+        <img src="R2.gif" width="248" height="465">
+      <br>
+  </td>
+  </tr>
+  <tr>
+  <td> 
+      <br>
+     - 3-Simulación de  un cierre de sesión de usuario.
+      <br>
+      <br>
+        <img src="R3.gif" width="248" height="465">
+      <br>
+  </td>
+   <td> 
+      <br>
+     - 4-Consulta a PokeAPI.
+      <br>
+      <br>
+        <img src="R4.gif" width="248" height="465">
+      <br>
+  </td>
+  </tr>
+  <tr>
+  <td> 
+      <br> 
+    - 5-Persistencia de algunos Pokémones.
+      <br>
+      <br>
+        <img src="R5.gif" width="248" height="465">
+      <br>
+  </td>
+   <td> 
+      <br>
+     - 6-Eliminación de Pokémones guardados por usuario.
+      <br>
+      <br>
+        <img src="R6.gif" width="248" height="465">
+      <br>
+  </td>
+  </tr>
+ </table> 
