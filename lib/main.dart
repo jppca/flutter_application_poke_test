@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 //My imports
@@ -15,6 +16,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Fixed orientation in the app
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    //Navigation bar color in the app
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Color.fromRGBO(242, 242, 242, 1),
+    ));
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => PokeService()),

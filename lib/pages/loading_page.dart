@@ -21,7 +21,6 @@ class _LoadingPageState extends State<LoadingPage> {
     return Scaffold(
       body: FutureBuilder(
         future: checkpokemones(context),
-        //future: ,
         builder: (context, snapshot) {
           return Center(
             child: Column(
